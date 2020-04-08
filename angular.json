@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "EventCatcherWeb"
+    }
+  },
+  "defaultProject": "EventCatcherWeb",
+  "cli": {
+    "analytics": "743164ac-8e81-4f84-81b1-715462ca4adf"
+  }
 }
