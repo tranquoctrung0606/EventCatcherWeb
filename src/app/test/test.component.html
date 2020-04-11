@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>angular test maps</h2>
+            <div class="form-group">
+                <label for="place">Search Place</label>
+                <input type="text" id="place" class="form-control input_user" #search [formControl]="searchControl" autocomplete="off" autocapitalize="off" spellcheck="off">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <agm-map style="height: 300px;">
+                
+            </agm-map>
+        </div>
+    </div>
+</div>
