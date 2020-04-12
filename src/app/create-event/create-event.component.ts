@@ -1,15 +1,16 @@
 import { Component, OnInit, ElementRef, NgZone } from '@angular/core';
-import {} from 'googlemaps';
+import { } from 'googlemaps';
 import { ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  selector: 'app-create-event',
+  templateUrl: './create-event.component.html',
+  styleUrls: ['./create-event.component.scss']
 })
-export class TestComponent implements OnInit {
+export class CreateEventComponent implements OnInit {
+
   @ViewChild('search')
   public searchElementRef: ElementRef;
   public zoom: number;
@@ -18,7 +19,7 @@ export class TestComponent implements OnInit {
   public latlongs: any = [] ;
   public latlong: any = {};
   public searchControl: FormControl;
-  private geoCoder;
+  public geoCoder
   public address: string;
 
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
@@ -30,11 +31,11 @@ export class TestComponent implements OnInit {
 
     this.searchControl = new FormControl();
     this.setCurrentPosition();
-    this.geoCoder = new google.maps.Geocoder;
+    
 
     this.mapsAPILoader.load().then(() => {
-      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: [],
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"],
         componentRestrictions: {'country': 'VN'}
       });
 
@@ -45,13 +46,17 @@ export class TestComponent implements OnInit {
             return;
           }
 
-          const latlong = {
-            lat: place.geometry.location.lat(),
-            long: place.geometry.location.lng()
-          };
+          // const latlong = {
+          //   lat: place.geometry.location.lat(),
+          //   long: place.geometry.location.lng()
+          // };
 
-          this.latlongs.push(latlong);
-          //this.searchControl.reset();
+          // //this.latlongs.push(latlong);
+          // //this.searchControl.reset();
+          
+          this.lat = place.geometry.location.lat();
+          this.long = place.geometry.location.lng();
+          this.zoom = 12;
         });
       });
     });
@@ -66,23 +71,4 @@ export class TestComponent implements OnInit {
       })
     }
   }
-
-  // getAddress(latitude, longitude) {
-  //   this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-  //     console.log(results);
-  //     console.log(status);
-  //     if (status === 'OK') {
-  //       if (results[0]) {
-  //         this.zoom = 12;
-  //         this.address = results[0].formatted_address;
-  //       } else {
-  //         window.alert('No results found');
-  //       }
-  //     } else {
-  //       window.alert('Geocoder failed due to: ' + status);
-  //     }
- 
-  //   });
-  // }
-
 }

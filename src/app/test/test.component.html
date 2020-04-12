@@ -10,9 +10,17 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <agm-map style="height: 300px;">
-                
+            <agm-map [latitude]="lat" [longitude]="long" [scrollwheel]="false" [zoom]="zoom" style="height: 300px;">
+                <agm-marker *ngFor="let latlong of latlongs" [latitude]="latlong.lat" [longitude]="latlong.long" >
+
+                </agm-marker>
             </agm-map>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p><b>Latitude:</b> <span id="latitude_view">{{lat}}</span></p>
+            <p><b>Longitude:</b> <span id="longitude_view">{{long}}</span></p>
         </div>
     </div>
 </div>

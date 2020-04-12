@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,33 +10,22 @@ import { Router, ActivatedRoute } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
   formdata
-
-  constructor(private router: Router) { }
+  username: string=""
+  password: string=""
+  constructor(public afAuth: AngularFireAuth, public router: Router) { }
 
   ngOnInit() {
-    this.formdata = new FormGroup({
-      name: new FormControl("", Validators.compose([
-         Validators.required,
-         Validators.minLength(6)
-      ])),
-      pass: new FormControl("", this.passwordvalidation)
-   });
+    
   }
-
-  passwordvalidation(formcontrol) {
-    if (formcontrol.value.length < 5) {
-       return {"pass" : true};
+   async login(){
+    const {username, password} =this
+    try {
+      const  res= await this.afAuth.signInWithEmailAndPassword(username +'@gmail.com', password)
+      console.dir(res)
+      this.router.navigate(['home']);
+    } catch (error) {
+      console.dir(error)
+     
     }
- }
- onClickSubmit(data) {
-    console.log(data.name);
-    if (data.name == "admin123" && data.pass == "admin123") {
-       alert("Login Successful");
-       this.router.navigate(['home']);
-    }
-    else{
-      alert("error");
-    }
- }
-
+  }
 }
