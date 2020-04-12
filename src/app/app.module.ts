@@ -17,6 +17,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import firebaseConfig from './firebase';
+import { OrganizerComponent } from './organizer/organizer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import firebaseConfig from './firebase';
     LoginComponent,
     TestComponent,
     SignupComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    OrganizerComponent
   ],
   imports: [
     BrowserModule,

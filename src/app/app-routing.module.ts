@@ -4,14 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component'
 import { SignupComponent } from './signup/signup.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { OrganizerComponent } from './organizer/organizer.component';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
-  {path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path: '', redirectTo: 'organizer', pathMatch: 'full' },
   {path:'test', component: TestComponent},
   {path:'sign-up', component: SignupComponent},
-  {path: '', redirectTo: 'login', pathMatch: 'full' },
-  {path:'create-event', component: CreateEventComponent}
+  {path:'create-event', component: CreateEventComponent},
+  {path:'organizer', component: OrganizerComponent}
 ];
 
 @NgModule({
