@@ -1,0 +1,14 @@
+[33m342f75f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31mEventCatcherWeb/master[m[33m)[m HEAD@{0}: rebase finished: returning to refs/heads/master
+[33m342f75f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31mEventCatcherWeb/master[m[33m)[m HEAD@{1}: pull --rebase: checkout 342f75f47771764cfe58ce6836dd0486bbbdadf3
+[33m5a22b1b[m HEAD@{2}: commit (merge): organizer
+[33m06f4307[m HEAD@{3}: checkout: moving from branch to master
+[33m38c8d04[m[33m ([m[1;31mEventCatcherWeb/branch[m[33m, [m[1;32mbranch[m[33m)[m HEAD@{4}: checkout: moving from master to branch
+[33m06f4307[m HEAD@{5}: commit: signup
+[33mea5396c[m HEAD@{6}: checkout: moving from master to master
+[33mea5396c[m HEAD@{7}: commit: router fail
+[33m19c117b[m HEAD@{8}: commit: signup
+[33m1a205f7[m HEAD@{9}: commit: update
+[33m609ea7b[m HEAD@{10}: commit: reup
+[33m90c8901[m HEAD@{11}: checkout: moving from master to master
+[33m90c8901[m HEAD@{12}: checkout: moving from master to master
+[33m90c8901[m HEAD@{13}: commit (initial): initial commit

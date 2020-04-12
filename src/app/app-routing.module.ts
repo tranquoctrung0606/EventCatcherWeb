@@ -8,9 +8,9 @@ import { OrganizerComponent } from './organizer/organizer.component';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
-  {path: '', redirectTo: 'organizer', pathMatch: 'full' },
+  {path: '', redirectTo: 'signup', pathMatch: 'full' },
   {path:'test', component: TestComponent},
-  {path:'sign-up', component: SignupComponent},
+  {path:'signup', component: SignupComponent},
   {path:'create-event', component: CreateEventComponent},
   {path:'organizer', component: OrganizerComponent}
 ];
