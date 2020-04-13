@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-//import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../services/user.model';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -13,26 +13,29 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 user: User = new User();
 cpassword: string =""
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private afAuth: AngularFireAuth) { }
   ngOnInit(): void {
   }
+
   newUser(){
     this.user=new User();
     this.save()
   }
+
   save(){
     this.userService.createUser(this.user);
     this.user=new User();
   }
  
-  signup(){
+   async signup(){
       if(this.user.password!==this.cpassword){
       alert("Password don't match")
     }
     else{
       alert("successful sign up")
+      this.user.roles="1";
       this.save()
-      this.router.navigate(['create-event'])
+      this.router.navigate(['login'])
     }
     
   }

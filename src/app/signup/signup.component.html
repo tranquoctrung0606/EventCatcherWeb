@@ -26,6 +26,24 @@
               </div>
               <input type="password" name="cpassword" class="form-control input_pass" value="" [(ngModel)]="cpassword" placeholder="Comfirm password">
             </div>
+            <div class="input-group mb-2">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-clipboard-check"></i></span>
+              </div>
+              <input type="text" name="fullname" class="form-control input_pass" value="" [(ngModel)]="user.fullname" placeholder="fullname">
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-clipboard-check"></i></span>
+              </div>
+              <input type="text" name="address" class="form-control input_pass" value="" [(ngModel)]="user.address" placeholder="address">
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-clipboard-check"></i></span>
+              </div>
+              <input type="text" name="contact" class="form-control input_pass" value="" [(ngModel)]="user.contact" placeholder="contact">
+            </div>
             <div class="d-flex justify-content-center mt-3 login_container" >
            <button type="submit" name="button" class="btn login_btn" (click)="signup()">Sign up</button>
            </div>

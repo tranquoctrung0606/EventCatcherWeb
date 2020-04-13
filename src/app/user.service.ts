@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './services/user.model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,16 @@ export class UserService {
  
   userRef: AngularFirestoreCollection<User> = null;
  
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private auth: AngularFireAuth) {
     this.userRef = db.collection(this.dbPath);
   }
  
   createUser(user: User): void {
-    this.userRef.add({...user});
+    // 
+    this.auth.createUserWithEmailAndPassword(user.username, user.password).then(result => {
+      user.uid = result.user.uid
+      this.userRef.doc(user.uid).set({...user});
+    }) // Dung Method nay tao authen cho no sau do luu firestore
   }
  
   updateUser(key: string, value: any): Promise<void> {

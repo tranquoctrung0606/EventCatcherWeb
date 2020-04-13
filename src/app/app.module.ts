@@ -26,7 +26,7 @@ import { OrganizerComponent } from './organizer/organizer.component';
     TestComponent,
     SignupComponent,
     CreateEventComponent,
-    OrganizerComponent
+    OrganizerComponent,
   ],
   imports: [
     BrowserModule,
