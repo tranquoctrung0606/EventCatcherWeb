@@ -39,46 +39,50 @@
                 </span>
                 <div class="wrap-input100 validate-input" data-validate="Name is required">
                     <span class="label-input100">Event Photo</span>
-                    <input class="input100" type="file" name="img" >
+                    <input class="input100" [(ngModel)]="event.photo" type="file" name="img" >
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Name is required">
                     <span class="label-input100">Name Event</span>
-                    <input class="input100" type="text" name="name" placeholder="Add a short, clear name">
+                    <input class="input100" type="text" [(ngModel)]="event.name" name="name" placeholder="Add a short, clear name">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" >
                     <span class="label-input100">Location</span>
-                    <input class="input100" type="text" name="location" placeholder="Include a place or address" value="{{lat}},{{long}}">
+                    <input class="input100" type="text" name="latitude" [(ngModel)]="event.latitude" placeholder="Include a place or address" value="{{lat}}">
+                    <input class="input100" type="text" name="longitude" [(ngModel)]="event.longitude" placeholder="Include a place or address" value="{{long}}">
                     
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" >
                     <span class="label-input100">Description</span>
-                    <textarea class="input100" rows="4" cols="50" name="description" placeholder="Tell people what your event is about"> </textarea>
+                    <textarea class="input100" [(ngModel)]="event.description" rows="4" cols="50" name="description" placeholder="Tell people what your event is about"> </textarea>
             <!-- 		<span class="focus-input100"></span> -->
                 </div>
 
                 <div class="wrap-input100 validate-input" >
                     <span class="label-input100" >Category</span>
-                    <select id="cars" style="width: 100%;height: 31px;">
-                          <option value="1">Volvo</option>
-                         <option value="2">Saab</option>
-                          <option value="3">Mercedes</option>
-                          <option value="4">Audi</option>
+                    <select id="cars" style="width: 100%;height: 31px;" [(ngModel)]="event.category" >
+                            <option value="Dance" >Dance</option>
+                            <option value="Drink">Drink</option>
+                            <option value="Fitness">Fitness</option>
+                            <option value="Food">Food</option>
+                            <option value="Game">Game</option>
+                            <option value="Heath">Heath</option>
+                            <option value="Other">Other</option>
                     </select>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 validate-input" >
                     <span class="label-input100">Starts</span>
-                    <input class="input100" type="datetime-local" name="starts" >
+                    <input class="input100" type="datetime-local" [(ngModel)]="event.timestart" name="starts" >
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 validate-input" >
                     <span class="label-input100">Ends</span>
-                    <input class="input100" type="datetime-local" name="ends" >
+                    <input class="input100" type="datetime-local" [(ngModel)]="event.timeend" name="ends" >
                     <span class="focus-input100"></span>
                 </div>
                 
@@ -99,7 +103,7 @@
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
+                        <button class="login100-form-btn" (click)="creater()">
                             Create
                         </button>
                     </div>

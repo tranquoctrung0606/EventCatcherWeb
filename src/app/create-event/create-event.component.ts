@@ -3,6 +3,8 @@ import { } from 'googlemaps';
 import { ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
+import { EventService } from '../event.service';
+import { Event } from '../services/event.model';
 
 @Component({
   selector: 'app-create-event',
@@ -22,7 +24,7 @@ export class CreateEventComponent implements OnInit {
   public geoCoder
   public address: string;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private eventService: EventService) { }
 
   ngOnInit(): void {
     this.zoom = 8;
@@ -45,15 +47,6 @@ export class CreateEventComponent implements OnInit {
           if (place.geometry == undefined || place.geometry == null ){
             return;
           }
-
-          // const latlong = {
-          //   lat: place.geometry.location.lat(),
-          //   long: place.geometry.location.lng()
-          // };
-
-          // //this.latlongs.push(latlong);
-          // //this.searchControl.reset();
-          
           this.lat = place.geometry.location.lat();
           this.long = place.geometry.location.lng();
           this.zoom = 12;
@@ -70,5 +63,17 @@ export class CreateEventComponent implements OnInit {
         this.zoom = 8;
       })
     }
+  }
+  event: Event= new Event();
+  newEvent(){
+    this.event=new Event();
+    this.save()
+  }
+  save(){
+    this.eventService.createEvent(this.event)
+    this.event=new Event();
+  }
+  creater(){
+    this.save()
   }
 }
