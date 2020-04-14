@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.1.0",
-    "@angular/animations": "~9.1.0",
+    "@angular/animations": "^9.1.1",
     "@angular/common": "~9.1.0",
     "@angular/compiler": "~9.1.0",
     "@angular/core": "~9.1.0",
@@ -23,6 +23,9 @@
     "@angular/router": "~9.1.0",
     "@types/googlemaps": "^3.39.3",
     "firebase": "^7.14.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.0",
+    "materialize-css": "^1.0.0",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.5",
     "tslib": "^1.10.0",

@@ -18,6 +18,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import firebaseConfig from './firebase';
 import { OrganizerComponent } from './organizer/organizer.component';
+import { AdminComponent } from './admin/admin.component';
+import { environment } from '../environments/environment';
+import {AdminService} from './services/admin.service'
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { OrganizerComponent } from './organizer/organizer.component';
     SignupComponent,
     CreateEventComponent,
     OrganizerComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,10 +44,11 @@ import { OrganizerComponent } from './organizer/organizer.component';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebase, 'angularafs'),
+    AngularFireAuthModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
