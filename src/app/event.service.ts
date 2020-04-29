@@ -6,7 +6,7 @@ import { Event } from './services/event.model';
   providedIn: 'root'
 })
 export class EventService {
-  private dbPath = '/Event';
+  private dbPath = '/event';
  
   eventRef: AngularFirestoreCollection<Event> = null;
  

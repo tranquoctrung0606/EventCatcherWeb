@@ -3,6 +3,11 @@ import { User } from '../services/user.model';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
+import { Organizer } from '../services/organizer.model';
+import { OrganizerService } from '../organizer.service';
 
 
 @Component({
@@ -11,30 +16,35 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-user: User = new User();
-cpassword: string =""
-  constructor(private userService: UserService, private router: Router, private afAuth: AngularFireAuth) { }
+  organizer: Organizer = new Organizer();
+  cpassword: string =""
+  constructor(private userService: UserService,
+  private router : Router,  
+  private db: AngularFirestore, 
+  private auth: AngularFireAuth,
+  private organizerServire: OrganizerService) { }
   ngOnInit(): void {
   }
 
-  newUser(){
-    this.user=new User();
+  newOrganizer(){
+    this.organizer=new Organizer();
     this.save()
   }
 
   save(){
-    this.userService.createUser(this.user);
-    this.user=new User();
+    //this.userService.createUser(this.user);
+    this.organizerServire.createOrganizer(this.organizer);
+    //this.user=new User();
+    this.organizer= new Organizer();
   }
- 
    async signup(){
-      if(this.user.password!==this.cpassword){
+      if(this.organizer.password!==this.cpassword){
       alert("Password don't match")
     }
     else{
       alert("successful sign up")
-      this.user.roles="1";
-      this.save()
+      this.organizer.roles="1";
+      this.save();
       this.router.navigate(['login'])
     }
     

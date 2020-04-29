@@ -1,4 +1,6 @@
-export interface User {
+import { Injectable } from '@angular/core';
+
+export interface User1 {
     uid?: string;
     username?: string;
     password?: string;

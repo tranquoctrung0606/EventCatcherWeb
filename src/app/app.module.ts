@@ -20,7 +20,15 @@ import firebaseConfig from './firebase';
 import { OrganizerComponent } from './organizer/organizer.component';
 import { AdminComponent } from './admin/admin.component';
 import { environment } from '../environments/environment';
-import {AdminService} from './services/admin.service'
+import {AdminService} from './services/admin.service';
+import { AddorganizerComponent } from './addorganizer/addorganizer.component';
+import * as firebase from 'firebase';
+import { AdminHomeComponent } from './admin-home/admin-home.component'
+import { OrganizerService } from './organizer.service';
+import { AngularFireChartsModule } from '@benpeterscode/angularfirecharts';
+import { OverviewOrganizerComponent } from './overview-organizer/overview-organizer.component';
+
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -31,6 +39,9 @@ import {AdminService} from './services/admin.service'
     CreateEventComponent,
     OrganizerComponent,
     AdminComponent,
+    AddorganizerComponent,
+    AdminHomeComponent,
+    OverviewOrganizerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +57,10 @@ import {AdminService} from './services/admin.service'
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'angularafs'),
     AngularFireAuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireChartsModule
   ],
-  providers: [AdminService],
+  providers: [AdminService, OrganizerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

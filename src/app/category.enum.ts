@@ -1,0 +1,26 @@
+export enum Category {
+    Art='Art',
+    Causes='Causes',
+    Comedy='Comedy',
+    Crafts='Crafts',
+    Dance='Dance',
+    Drinks='Drinks',
+    Film='Film',
+    Fitness='Fitness',
+    Food='Food',
+    Games='Games',
+    Gardening='Gardening',
+    Health='Health',
+    Home='Home',
+    Literature='Literature',
+    Music='Music',
+    Networking='Networking',
+    Party='Party',
+    Religion='Religion',
+    Shopping='Shopping',
+    Sports='Sports',
+    Theater='Theater',
+    Wellness='Wellness',
+    Other='Other'
+}
+
