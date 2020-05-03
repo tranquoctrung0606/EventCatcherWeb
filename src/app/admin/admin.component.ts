@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserService } from '../user.service';
 import { OrganizerService } from '../organizer.service';
+import { Event1 } from '../services/event';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -40,12 +41,16 @@ export class AdminComponent implements OnInit {
 organizer1: Organizer1[];
 editingOganizer: Organizer1;
 editing: boolean=false;
+event1: Event1[];
   constructor(public adminSevice: AdminService, private router: Router,
      private afAuth: AngularFireAuth, private oganizerService: OrganizerService) { }
 
   ngOnInit(): void {
     this.adminSevice.getOrganizer().subscribe(organizer =>{
       this.organizer1=organizer;
+    })
+    this.adminSevice.getEvent().subscribe(event =>{
+      this.event1= event;
     })
   }
   deleteOrganizer(key: string){

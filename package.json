@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.0",
     "@benpeterscode/angularfirecharts": "0.0.6",
     "@types/googlemaps": "^3.39.3",
+    "canvasjs": "^1.8.3",
     "chart.js": "^2.9.3",
     "firebase": "^7.14.2",
     "font-awesome": "^4.7.0",

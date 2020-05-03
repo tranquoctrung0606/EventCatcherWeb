@@ -64,10 +64,7 @@ export class OrganizerService {
       return this.db.collection(path, ref => ref.orderBy(sortBy));
     }
   }
-  getCollectionSnapshot(
-    path: string,
-    sortBy?: string
-  ): Observable<any[]> {
+  getCollectionSnapshot(path: string, sortBy?: string): Observable<any[]> {
     return this.getCollectionRef(path, sortBy).snapshotChanges();
   }
   getCollection(path: string, sortBy?: string) : Observable<any[]> {

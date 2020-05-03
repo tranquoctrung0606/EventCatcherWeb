@@ -1,6 +1,6 @@
 import { Category } from '../category.enum';
 export class Event {
-    id: string;
+    uid: string;
     name: string;
     image: string; 
     description: string;

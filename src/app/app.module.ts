@@ -27,6 +27,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component'
 import { OrganizerService } from './organizer.service';
 import { AngularFireChartsModule } from '@benpeterscode/angularfirecharts';
 import { OverviewOrganizerComponent } from './overview-organizer/overview-organizer.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -41,7 +42,8 @@ firebase.initializeApp(environment.firebase);
     AdminComponent,
     AddorganizerComponent,
     AdminHomeComponent,
-    OverviewOrganizerComponent
+    OverviewOrganizerComponent,
+    EventListComponent
   ],
   imports: [
     BrowserModule,
