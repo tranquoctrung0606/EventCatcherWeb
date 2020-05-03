@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+//import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 
@@ -27,23 +27,19 @@ import { AdminHomeComponent } from './admin-home/admin-home.component'
 import { OrganizerService } from './organizer.service';
 import { AngularFireChartsModule } from '@benpeterscode/angularfirecharts';
 import { OverviewOrganizerComponent } from './overview-organizer/overview-organizer.component';
-import { EventListComponent } from './event-list/event-list.component';
 
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     TestComponent,
     SignupComponent,
     CreateEventComponent,
     OrganizerComponent,
-    AdminComponent,
     AddorganizerComponent,
     AdminHomeComponent,
-    OverviewOrganizerComponent,
-    EventListComponent
+    OverviewOrganizerComponent
   ],
   imports: [
     BrowserModule,

@@ -183,21 +183,18 @@ export class CreateEventComponent implements OnInit {
     this.event.locationLat=this.lat;
     this.event.locationLng=this.long;
     this.event.location=this.address;
-    this.event.image=this.fb
-    this.event.uid=this.randomString(10)
      this.afAuth.authState.subscribe( user => {
- if (user) { 
-  this.user.uid = user.uid
+ if (user) { this.user.uid = user.uid
   console.log("uid   "+this.user.uid)
   this.event.hostId=user.uid;
   this.event.hostName=user.email
-  this.save()
  }
  });
     //this.afs.collection('event', ref => ref.where('hostID', '==', 'large'))
     //this.event.hostId='xOeHBq6Fm9PlCf35sNcUhzFR2hg2';
-    
-   // this.save()
+    this.event.image=this.fb
+    this.event.id=this.randomString(10)
+    this.save()
   }
   }
 }

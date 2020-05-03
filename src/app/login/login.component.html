@@ -7,18 +7,18 @@
           </div>
         </div>
         <div class="d-flex justify-content-center form_container">
-          <form>
+          <form (ngSubmit)="login(loginForm.value)" [formGroup]="loginForm">
             <div class="input-group mb-3">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
-              <input type="text" name="username" class="form-control input_user" value="" [(ngModel)]="username" placeholder="username">
+              <input type="text" name="email" class="form-control input_user" value="" formControlName="email" placeholder="username">
             </div>
             <div class="input-group mb-2">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input type="password" name="password" class="form-control input_pass" value="" [(ngModel)]="password"  placeholder="password">
+              <input type="password" name="password" class="form-control input_pass" value="" formControlName="password"  placeholder="password">
             </div>
             <div class="form-group">
               <div class="custom-control custom-checkbox">
@@ -27,8 +27,9 @@
               </div>
             </div>
               <div class="d-flex justify-content-center mt-3 login_container" >
-           <button type="submit" name="button" class="btn login_btn" (click)="login()" >Login</button>
-           </div>
+           <!-- <button type="submit" name="button" class="btn login_btn" (click)="login()" >Login</button> -->
+           <input type="submit" name="button" class="btn login_btn" [disabled]="!loginForm.valid" value="Log In">
+          </div>
            <div class="text-center social-btn">
         	<a class="btn btn-danger btn-block"><i class="fab fa-google"></i> Sign in with <b>Google</b></a>
         </div>
