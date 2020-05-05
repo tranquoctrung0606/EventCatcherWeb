@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { FirebaseService } from '../firebase.service'
 
 @Component({
   selector: 'app-admin-home',
@@ -10,7 +11,7 @@ export class AdminHomeComponent implements OnInit {
   @Input() numberOfEvent: number;
   @Input() numberOfUser: number;
   @Input() numberOfOrganizer: number;
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore, private firebaseService: FirebaseService) { 
    
   }
 
@@ -24,5 +25,9 @@ export class AdminHomeComponent implements OnInit {
  this.db.collection('organizer').get().toPromise().then(snap => {
   this.numberOfOrganizer = snap.size // will return the collection size
 });
+  }
+
+  logout(){
+    this.firebaseService.logOut();
   }
 }
