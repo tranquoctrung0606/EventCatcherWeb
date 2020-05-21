@@ -243,13 +243,26 @@
                                 Create Student</button>
                             </div>
                           </div> -->
+                          <div class="row" style="margin-bottom: 20px; margin-top: 20px">
+                            <div class="col-6">
+                              <div class="input-group">
+                                <input class="form-control border-secondary py-2" style="height:30px; font-size:14px;" placeholder="search for items" type="text"
+                                  #data />
+                                  <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary" style="width: 100px; padding: 5px; background-color:white; font-color: red;" type="button" (click)="devicesearch(data.value)">
+                                   search
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                   <div class="row" style="margin-top: 25px;">
 
                     <div *ngFor="let item of events">
                       <div *ngIf="OrganizerId == item.hostId">
                         
                       <div class="col-md-3 col-sm-6">
-                        <div class="card card-block" style="width: 18rem;">
+                        <div class="card card-block" style="width: 18rem;" class="card" [ngClass]="{highlight: item.highlight}">
                           <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
                             <img src={{item.image}} alt="Photo of sunset">
                             <h5 class="card-title mt-3 mb-3">{{item.name}}</h5>

@@ -18,6 +18,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Organizer } from '../services/organizer.model';
+import { HighlightPipe } from './highlight.pipe';
 
 @Component({
   selector: 'app-organizer',
@@ -28,7 +29,9 @@ export class OrganizerComponent implements OnInit {
   organizerEvent: Organizer1[];
 
   @ViewChild('search')
+
   public searchElementRef: ElementRef;
+
   public zoom: number;
   public lat: number;
   public long: number;
@@ -64,8 +67,12 @@ export class OrganizerComponent implements OnInit {
     Category.Other
   ];
 
+  search: string;
+  searchedItems: any[];
+  highlightPipe = new HighlightPipe();
+
   //Event Properties
-  events: any;
+  events: {highlight:boolean ; id: string; isEdit: boolean; name: string; numMember: any; location: any; image: any}[];
   eventName: string;
   eventImage: string;
   eventDes: string;
@@ -98,7 +105,7 @@ export class OrganizerComponent implements OnInit {
 
       this.events = data.map(e => {
         return {
-
+          highlight: false,
           id: e.payload.doc.id,
           isEdit: false,
           hostId: e.payload.doc.data()['hostId'],
@@ -222,6 +229,12 @@ export class OrganizerComponent implements OnInit {
   logout() {
     this.firebaseService.logOut();
   }
+  devicesearch(input) {
+    this.search = input;
+    this.searchedItems = this.highlightPipe.transform(this.events, input, true);
+    // only names --> const names = this.searchedItems.map(item => item.label);
+    console.log(this.searchedItems);
+  }
   upload(event) {
     var n = Date.now();
     const file = event.target.files[0];
@@ -277,4 +290,3 @@ export class OrganizerComponent implements OnInit {
       });
     }
   }
-
