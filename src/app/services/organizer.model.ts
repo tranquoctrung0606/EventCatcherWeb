@@ -5,5 +5,5 @@ export class Organizer {
     fullname: string;
     address: string;
     contact: string;
-    roles: string;
+    role: string;
 }

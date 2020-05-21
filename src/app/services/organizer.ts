@@ -5,5 +5,5 @@ export interface Organizer1 {
     fullname?: string;
     address?: string;
     contact?: string;
-    roles?: string;
+    role?: string;
 }

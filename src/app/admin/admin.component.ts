@@ -14,38 +14,22 @@ import { FirebaseService } from '../firebase.service'
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-// user1: User1[];
-// //user: User = new User();
-// editingUser: User1;
-// editing: boolean=false;
-//   constructor(public adminSevice: AdminService, private router: Router,
-//      private afAuth: AngularFireAuth, private userService: UserService) { }
 
-//   ngOnInit(): void {
-//     this.adminSevice.getUser().subscribe(user =>{
-//       this.user1=user;
-//     })
-//   }
-//   deleteUser(key: string){
-//     this.userService.deleteUser(key);
-//     }
-//   edit(event, user){
-//     this.editingUser=user;
-//     this.editing=!this.editing;
-//   }
-//   updateUser(){
-//     this.userService.updateUser(this.editingUser);
-//     this.editingUser={} as User1;
-//     this.editing=false;
-//   }
 organizer1: Organizer1[];
 editingOganizer: Organizer1;
 editing: boolean=false;
+user1: User1[];
+editingUser: User1;
+editing1: boolean=false;
   constructor(public adminSevice: AdminService, private router: Router,
-     private afAuth: AngularFireAuth, private oganizerService: OrganizerService, private firebaseService: FirebaseService) { }
+     private afAuth: AngularFireAuth, private oganizerService: OrganizerService,
+      private firebaseService: FirebaseService, private userSevice: UserService) { }
 
   ngOnInit(): void {
     this.adminSevice.getOrganizer().subscribe(organizer =>{
+      this.organizer1=organizer;
+    })
+    this.adminSevice.getUser().subscribe(organizer =>{
       this.organizer1=organizer;
     })
   }
@@ -61,7 +45,7 @@ editing: boolean=false;
     this.editingOganizer={} as Organizer1;
     this.editing=false;
   }
-
+ 
   logout(){
     this.firebaseService.logOut();
   }

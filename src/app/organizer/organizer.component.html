@@ -3,57 +3,53 @@
   <!-- Sidebar -->
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-user-shield"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Administrator</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-     
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-user-shield"></i>
       </div>
+      <div class="sidebar-brand-text mx-3">Organizer</div>
+    </a>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fa fa-bars"></i>
-          <span>Organizer Management</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        </div>
-      </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
-       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-       <i class="fas fa-user-alt"></i>
-          <span>User Management</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        </div>
-      </li><li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+    <!-- Nav Item - Dashboard -->
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Interface
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fa fa-bars"></i>
+        <span>Event Management</span>
+      </a>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      </div>
+    </li>
+
+    
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+        aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-sign-out-alt"></i>
         <button class="logout" (click)="logout()">Logout</button>
-        </a>
-        </li>
-     
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+      </a>
+    </li>
 
-      <!-- Heading -->
-    
-    </ul>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+
+  </ul>
   <!-- End of Sidebar -->
 
   <!-- Content Wrapper -->
@@ -63,23 +59,27 @@
     <div id="content">
 
       <!-- Topbar -->
-      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style=" margin-bottom: -2.5rem!important; ">
-         
-              <h2>Organizer Management</h2>
-    
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+        style=" margin-bottom: -2.5rem!important; ">
+
+        <h2>Event</h2>
+
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 
           <!-- Nav Item - Search Dropdown (Visible Only XS) -->
           <li class="nav-item dropdown no-arrow d-sm-none">
-            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-search fa-fw"></i>
             </a>
             <!-- Dropdown - Messages -->
-            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+              aria-labelledby="searchDropdown">
               <form class="form-inline mr-auto w-100 navbar-search">
                 <div class="input-group">
-                  <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                  <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                    aria-label="Search" aria-describedby="basic-addon2">
                   <div class="input-group-append">
                     <button class="btn btn-primary" type="button">
                       <i class="fas fa-search fa-sm"></i>
@@ -96,126 +96,139 @@
 
       <!-- Begin Page Content -->
       <div id="page-inner" style=" padding: 10px; ">
-          
-          <!-- /. ROW  -->
-          <hr />
-          <div class="row">
-              <div class="col-md-12">
-                  <!-- Advanced Tables -->
-                  <div class="limiter" style="background-color: #999999;">
-                    <div class="container-login100">
-                        <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width:45%">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h2>MAP</h2>
-                                    <div class="form-group">
-                                        <label for="place">Search Place</label>
-                                        <input type="text" id="place" class="form-control input_user" #search [formControl]="searchControl" autocomplete="off" autocapitalize="off" spellcheck="off">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <agm-map [latitude]="lat" [longitude]="long" [scrollwheel]="false" [zoom]="zoom" style="height: 300px;">
-                                        <!-- <agm-marker *ngFor="let latlong of latlongs" [latitude]="latlong.lat" [longitude]="latlong.long" >
+
+        <!-- /. ROW  -->
+        <hr />
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Advanced Tables -->
+            <div class="limiter" style="background-color: #999999;">
+              <div class="container-login100">
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width:45%">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h2>Choose your location:</h2>
+                      <div class="form-group">
+                        <label for="place">Search Place</label>
+                        <input type="text" id="place" class="form-control input_user" #search
+                          [formControl]="searchControl" autocomplete="off" autocapitalize="off" spellcheck="off">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <agm-map [latitude]="lat" [longitude]="long" [scrollwheel]="false" [zoom]="zoom"
+                        style="height: 300px;">
+                        <!-- <agm-marker *ngFor="let latlong of latlongs" [latitude]="latlong.lat" [longitude]="latlong.long" >
                         
                                         </agm-marker> -->
-                
-                                        <agm-marker [latitude]="lat" [longitude]="long" >
-                
-                                        </agm-marker>
-                                    </agm-map>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
 
-                                  <p><b>Latitude:</b> <input id="latitude_view" type="text" readonly required [(ngModel)]="event.locationLat" value="{{lat}}"></p>
-                                  <p><b>Longitude:</b> <input id="longitude_view" type="text" readonly require [(ngModel)]="event.locationLng" placeholder="longitude" value="{{long}}" ></p>
-                                  <!-- <p><b>Address:</b> <span id="add_view" required [(ngModel)]="event.location" name="location" placeholder="Location" value="{{address}}">{{address}}</span></p> -->
+                        <agm-marker [latitude]="lat" [longitude]="long">
 
-                                  <div class="wrap-input100 validate-input">
-                                    <span class="label-input100">Event Photo</span>
-                                      <input class="input100" type="file" name="img"  required>
-                                    <span class="focus-input100"></span>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                
-                        <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width: 55%;">
-                            <form class="login100-form validate-form" style="width: 100%;">
-                                <span class="login100-form-title p-b-59">
-                                    Create Event
-                                </span>
-                                
-                                <div class="wrap-input100 validate-input" data-validate="Name is required">
-                                    <span class="label-input100">Name Event</span>
-                                    <input class="input100" type="text" required [(ngModel)]="event.name" name="name" placeholder="Add a short, clear name">
-                                    <span class="focus-input100"></span>
-                                </div>
-                
-                                <div class="wrap-input100 validate-input" data-validate="required">
-                                  <span class="label-input100">Location</span>
-                                  <input class="input100" type="text" required [(ngModel)]="event.location" name="location" placeholder="Location" value="{{address}}">
-                                  <span class="focus-input100"></span>
-                              </div>
+                        </agm-marker>
+                      </agm-map>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
 
-                                <div class="wrap-input100 validate-input" data-validate="Location is required">
-                                  <span class="label-input100">Location name</span>
-                                  <input class="input100" type="text" required [(ngModel)]="event.locationName" name="locationName" placeholder="Location name">
-                                  <span class="focus-input100"></span>
-                              </div>
-                
-                                <div class="wrap-input100 validate-input" >
-                                    <span class="label-input100">Description</span>
-                                    <textarea class="input100"  required [(ngModel)]="event.description" required rows="4" cols="50" name="description" required [(ngModel)]="event.location" placeholder="Tell people what your event is about" value="{{address}}"> </textarea>
-                            <!-- 		<span class="focus-input100"></span> -->
-                                </div>
+                      <p><b>Latitude:</b> <input id="latitude_view" type="text" readonly 
+                          [(ngModel)]="event.locationLat" value="{{lat}}"></p>
+                      <p><b>Longitude:</b> <input id="longitude_view" type="text" readonly 
+                          [(ngModel)]="event.locationLng" value="{{long}}"></p>
+                      <p><b>Address:</b> <input id="add_view" type="text" readonly  [(ngModel)]="event.location" 
+                         value="{{address}}"></p>
 
-                                <div class="wrap-input100 validate-input" data-validate="Is required">
-                                  <span class="label-input100">Number member</span>
-                                  <input class="input100" type="number" pattern="[-+]?[0-9]" required [(ngModel)]="event.numMember" name="nummember" placeholder="Number of participants">
-                                  <span class="focus-input100"></span>
-                              </div>
-                
-                                <div class="wrap-input100 validate-input"  >
-                                    <span class="label-input100" >Category</span>
-                                    
-                                    <select name="category" style="width: 100%;height: 31px;"  >
-                                            <option >--Select--</option>
-                                            <option *ngFor="let a of listOptions" [value]="a"  >{{a}}</option>
-                                    </select>
-                                    <span class="focus-input100"></span>
-                                </div>
-                                <div class="wrap-input100 validate-input" >
-                                    <span class="label-input100">Start Date</span>
-                                    <input class="input100" type="datetime-local" min="2020-04-01T00:00" required [(ngModel)]="event.startDate" name="starts" >
-                                    <span class="focus-input100"></span>
-                                </div>
-                                <div class="wrap-input100 validate-input" >
-                                    <span class="label-input100">End Date</span>
-                                    <input class="input100" type="datetime-local" min="2020-04-01T00:00" required [(ngModel)]="event.endDate" name="ends" >
-                                    <span class="focus-input100"></span>
-                                </div>
-                              
-                                <div class="container-login100-form-btn">
-                                    <div class="wrap-login100-form-btn">
-                                        <div class="login100-form-bgbtn"></div>
-                                        <button class="login100-form-btn" (click)="creater()">
-                                            Create
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- //Show Events -->
-                        <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width: 100%;">
-                          <h1 style="margin-top: 25px;">
-                            Event List
-                          </h1>
-                            <br />
-                          <!-- <div class="row" style="margin-top: 25px;">
+                         <div class="wrap-input100 validate-input">
+                          <span class="label-input100">Event Photo</span>
+                          <input class="input100" [(ngModel)]="event.image" type="file" name="imgage" (change)="upload($event)" required>
+                          <span class="focus-input100"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width: 55%;">
+                  <form class="login100-form validate-form" style="width: 100%;" >
+                    <span class="login100-form-title p-b-59">
+                      Create Event
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                      <span class="label-input100">Name Event</span>
+                      <input class="input100" type="text" required [(ngModel)]="event.name" name="name"
+                        placeholder="Add a short, clear name">
+                      <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="required">
+                      <span class="label-input100">Location</span>
+                      <input class="input100" type="text" required [(ngModel)]="event.location" name="location"
+                        placeholder="Location" value="{{address}}">
+                      <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Location is required">
+                      <span class="label-input100">Location name</span>
+                      <input class="input100" type="text" required [(ngModel)]="event.locationName" name="locationName"
+                        placeholder="Location name">
+                      <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                      <span class="label-input100">Description</span>
+                      <textarea class="input100" required [(ngModel)]="event.description" required rows="4" cols="50"
+                        name="description"
+                        placeholder="Tell people what your event is about" value=""> </textarea>
+                      <!-- 		<span class="focus-input100"></span> -->
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Is required">
+                      <span class="label-input100">Number member</span>
+                      <input class="input100" type="number" pattern="[-+]?[0-9]" required [(ngModel)]="event.numMember"
+                        name="numMember" placeholder="Number of participants">
+                      <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                      <span class="label-input100">Category</span>
+
+                      <select name="category" style="width: 100%;height: 31px;">
+                        <option>--Select--</option>
+                        <option *ngFor="let a of listOptions" [value]="a">{{a}}</option>
+                      </select>
+                      <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                      <span class="label-input100">Start Date</span>
+                      <input class="input100" type="datetime-local" min="2020-04-01T00:00" required
+                        [(ngModel)]="event.startDate" name="startDate">
+                      <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                      <span class="label-input100">End Date</span>
+                      <input class="input100" type="datetime-local" max="2020-10-10T00:00" required
+                        [(ngModel)]="event.endDate" name="endDate">
+                      <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                      <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" (click)="creater()">
+                          Create
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- //Show Events -->
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width: 100%;">
+                  <h1 style="margin-top: 25px;">
+                    Event List
+                  </h1>
+                  <br />
+                  <!-- <div class="row" style="margin-top: 25px;">
                             <div class="col-md-3">
                               <input type="text" class="form-control" [(ngModel)]="eventName" placeholder="Name">
                             </div>
@@ -230,66 +243,73 @@
                                 Create Student</button>
                             </div>
                           </div> -->
-                          <div class="row" style="margin-top: 25px;">
-                            <div *ngFor="let item of events">
-                              <div class="col-md-3 col-sm-6">
-                                <div class="card card-block" style="width: 18rem;">
-                                  <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
-                                    <img src={{item.image}} alt="Photo of sunset">
-                                    <h5 class="card-title mt-3 mb-3">{{item.name}}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Participants: {{item.numMember}} Peoples</h6>
-                                    <p class="card-text">Address: {{item.location}}</p>
-                                    <a href="javascript:void(0);" class="card-link" (click)="EditRecord(item)">Edit</a>
-                                    <a href="javascript:void(0);" class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+                  <div class="row" style="margin-top: 25px;">
+
+                    <div *ngFor="let item of events">
+                      <div *ngIf="OrganizerId == item.hostId">
+                        
+                      <div class="col-md-3 col-sm-6">
+                        <div class="card card-block" style="width: 18rem;">
+                          <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+                            <img src={{item.image}} alt="Photo of sunset">
+                            <h5 class="card-title mt-3 mb-3">{{item.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Participants: {{item.numMember}} Peoples</h6>
+                            <p class="card-text">Address: {{item.location}}</p>
+                            <a href="javascript:void(0);" class="card-link" (click)="EditRecord(item)">Edit</a>
+                            <a href="javascript:void(0);" class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+                          </div>
+                          <ng-template #elseBlock>
+                            <div class="card-body">
+                              <h5 class="card-title">Edit</h5>
+                              <div class="form-group">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    Event Name:
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditName"
+                                      placeholder="Edit Name">
                                   </div>
-                                  <ng-template #elseBlock>
-                                    <div class="card-body">
-                                      <h5 class="card-title">Edit</h5>
-                                      <div class="form-group">
-                                        <div class="row">
-                                          <div class="col-md-12">
-                                            Event Name:
-                                            <input type="text" class="form-control" [(ngModel)]="item.EditName" placeholder="Edit Name">
-                                          </div>
-                                          <div class="col-md-12">
-                                            <input type="text" class="form-control" [(ngModel)]="item.EditNumMember" placeholder="Edit Age">
-                                          </div>
-                                          <div class="col-md-12">
-                                            <input type="text" class="form-control" [(ngModel)]="item.EditLocation" placeholder="Edit Address">
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <a href="javascript:void(0);" class="card-link" (click)="item.isEdit = false">Cancel</a>
-                                      <a href="javascript:void(0);" class="card-link" (click)="UpdateRecord(item)">Update</a>
-                                    </div>
-                                  </ng-template>
+                                  <div class="col-md-12">
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditNumMember"
+                                      placeholder="Edit Age">
+                                  </div>
+                                  <div class="col-md-12">
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditLocation"
+                                      placeholder="Edit Address">
+                                  </div>
                                 </div>
                               </div>
+                              <a href="javascript:void(0);" class="card-link" (click)="item.isEdit = false">Cancel</a>
+                              <a href="javascript:void(0);" class="card-link" (click)="UpdateRecord(item)">Update</a>
                             </div>
-                          </div>
+                          </ng-template>
                         </div>
-  
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-                  <!--End Advanced Tables -->
               </div>
-          </div>
 
-      </div>
-    <!-- End of Main Content -->
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-      <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-          <span>Copyright &copy; Your Website 2019</span>
+            </div>
+          </div>
         </div>
+        <!--End Advanced Tables -->
       </div>
-    </footer>
-    <!-- End of Footer -->
+    </div>
 
   </div>
-  <!-- End of Content Wrapper -->
+  <!-- End of Main Content -->
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright &copy; Your Website 2019</span>
+      </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
@@ -300,7 +320,8 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

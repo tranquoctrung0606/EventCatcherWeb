@@ -27,7 +27,7 @@ export class AddorganizerComponent implements OnInit {
   }
   async createOrganizer(){
     alert("Successfull")
-    this.organizer.roles="1"
+    this.organizer.role="1"
     this.save()
     this.router.navigate(['admin'])
   }

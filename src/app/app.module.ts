@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
-import { CreateEventComponent } from './create-event/create-event.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes} from '@angular/router';
@@ -27,6 +26,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component'
 import { OrganizerService } from './organizer.service';
 import { AngularFireChartsModule } from '@benpeterscode/angularfirecharts';
 import { OverviewOrganizerComponent } from './overview-organizer/overview-organizer.component';
+import { AdminUsermanagementComponent } from './admin-usermanagement/admin-usermanagement.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -35,11 +35,11 @@ firebase.initializeApp(environment.firebase);
     AppComponent,
     TestComponent,
     SignupComponent,
-    CreateEventComponent,
     OrganizerComponent,
     AddorganizerComponent,
     AdminHomeComponent,
-    OverviewOrganizerComponent
+    OverviewOrganizerComponent,
+    AdminUsermanagementComponent
   ],
   imports: [
     BrowserModule,
