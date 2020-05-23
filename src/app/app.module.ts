@@ -28,6 +28,9 @@ import { AngularFireChartsModule } from '@benpeterscode/angularfirecharts';
 import { OverviewOrganizerComponent } from './overview-organizer/overview-organizer.component';
 import { AdminUsermanagementComponent } from './admin-usermanagement/admin-usermanagement.component';
 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DemoMaterialModule } from './material-modul'
+
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
@@ -56,7 +59,8 @@ firebase.initializeApp(environment.firebase);
     AngularFireModule.initializeApp(environment.firebase, 'angularafs'),
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    AngularFireChartsModule
+    AngularFireChartsModule,
+    DemoMaterialModule
   ],
   providers: [AdminService, OrganizerService],
   bootstrap: [AppComponent]

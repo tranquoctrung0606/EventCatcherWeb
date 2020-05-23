@@ -1,7 +1,7 @@
 import { OrganizerService } from '../services/organizer.service'
 import { Organizer1 } from '../services/organizer';
 //import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { Component, OnInit, ElementRef, NgZone, Inject, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, NgZone, Injectable, Input } from '@angular/core';
 import { } from 'googlemaps';
 import { Category } from '../category.enum';
 import { ViewChild } from '@angular/core';
@@ -19,6 +19,17 @@ import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Organizer } from '../services/organizer.model';
 import { HighlightPipe } from './highlight.pipe';
+import { DatePipe } from '@angular/common';
+import { of } from 'rxjs';
+import { tap, debounceTime, map, startWith } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+
+const datePipe = new DatePipe('en-US');
+
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-organizer',
@@ -70,15 +81,23 @@ export class OrganizerComponent implements OnInit {
   search: string;
   searchedItems: any[];
   highlightPipe = new HighlightPipe();
+  searchValue: string = "";
+  results: any;
 
   //Event Properties
-  events: {highlight:boolean ; id: string; isEdit: boolean; name: string; numMember: any; location: any; image: any}[];
+  events: any;
+  upcomingEvents: any;
+  ongoingEvents: any;
+  endedEvents: any;
   eventName: string;
   eventImage: string;
   eventDes: string;
 
   eventNumMember: number;
   eventLocation: string;
+
+  
+
   @Input() OrganizerId: string;
 
   constructor(public organizerSevice: OrganizerService,
@@ -88,7 +107,8 @@ export class OrganizerComponent implements OnInit {
     private firebaseService: FirebaseService,
     private crudService: CrudService,
     public afAuth: AngularFireAuth,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    public afs: AngularFirestore,
   ) { }
 
   ngOnInit(): void {
@@ -112,11 +132,31 @@ export class OrganizerComponent implements OnInit {
           name: e.payload.doc.data()['name'],
           numMember: e.payload.doc.data()['numMember'],
           location: e.payload.doc.data()['location'],
-          image: e.payload.doc.data()['image']
+          image: e.payload.doc.data()['image'],
+          startDate: e.payload.doc.data()['startDate'],
+          endDate: e.payload.doc.data()['endDate']
         };
       })
-      console.log(this.events);
+      console.log(this.events.name);
 
+      let a = Date.now();
+      let start = new Date(a).getTime()/1000;
+
+      this.upcomingEvents = this.events.filter(
+        m => new Date(m.startDate.seconds) >= new Date(start)
+        );
+
+        this.ongoingEvents = this.events.filter(
+          m => new Date(m.startDate.seconds) == new Date(start)
+          );
+
+          this.endedEvents = this.events.filter(
+            m => new Date(m.startDate.seconds) <= new Date(start)
+            );
+
+      // console.log(this.upcomingEvents);
+
+      
     });
 
     this.zoom = 8;
@@ -198,7 +238,9 @@ export class OrganizerComponent implements OnInit {
       })
     }
   }
+
   event: Event = new Event();
+
   newEvent() {
     this.event = new Event();
     this.save()
@@ -229,12 +271,14 @@ export class OrganizerComponent implements OnInit {
   logout() {
     this.firebaseService.logOut();
   }
+
   devicesearch(input) {
     this.search = input;
     this.searchedItems = this.highlightPipe.transform(this.events, input, true);
     // only names --> const names = this.searchedItems.map(item => item.label);
     console.log(this.searchedItems);
   }
+
   upload(event) {
     var n = Date.now();
     const file = event.target.files[0];
@@ -260,9 +304,13 @@ export class OrganizerComponent implements OnInit {
         }
       });
   }
+
   parseValue(value: Category) {
     this.category = value;
   }
+  
+    
+
   creater() {
     // if (this.event.name == null || this.event.description == null 
     //   || this.event.category == null || this.event.startDate == null ||
@@ -290,3 +338,4 @@ export class OrganizerComponent implements OnInit {
       });
     }
   }
+

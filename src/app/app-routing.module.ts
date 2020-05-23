@@ -21,8 +21,7 @@ const routes: Routes = [
   { path: 'overviewOrganizer', component: OverviewOrganizerComponent},
   { path: 'admin/organizer', canActivate:[AuthGuard], data: {roles: ["admin"]} ,loadChildren: () => AdminModule },
   { path: 'admin/user', canActivate:[AuthGuard], data: {roles: ["admin"]} ,loadChildren: () => AdminModule1 },
-  { path: 'organizer', canActivate:[AuthGuard], component: OrganizerComponent},
-  //{ path: 'create-event', component: CreateEventComponent}
+  { path: 'organizer/eventmanage', canActivate:[AuthGuard], component: OrganizerComponent}
 ];
 
 @NgModule({

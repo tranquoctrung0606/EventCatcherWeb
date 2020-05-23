@@ -78,7 +78,7 @@ export class FirebaseService {
             //setUserStatus
             this.setUserStatus(this.currentUser)
             if(userRef.data().role !== "admin") {
-              this.router.navigate(["/organizer"]);
+              this.router.navigate(["organizer/eventmanage"]);
             }else{
               this.router.navigate(["/admin"]);
             }
@@ -115,7 +115,7 @@ export class FirebaseService {
             console.log(this.userStatus)
             
             if(userRef.data().role !== "admin") {
-             this.ngZone.run(() => this.router.navigate(["/organizer"]));
+             this.ngZone.run(() => this.router.navigate(["organizer/eventmanage"]));
             }else{
              this.ngZone.run(() => this.router.navigate(["/admin"])); 
             }

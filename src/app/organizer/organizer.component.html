@@ -24,9 +24,19 @@
       Interface
     </div>
 
+    <li class="nav-item">
+      <a class="nav-link collapsed"  routerLink="/organizer/overview" data-toggle="collapse" data-target="#collapseUtilities"
+        aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa-user-alt"></i>
+        <span>Overview</span>
+      </a>
+      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      </div>
+    </li>
+
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+      <a class="nav-link collapsed" href="/organizer/eventmanagement" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
         aria-controls="collapseTwo">
         <i class="fa fa-bars"></i>
         <span>Event Management</span>
@@ -225,9 +235,70 @@
                 <!-- //Show Events -->
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width: 100%;">
                   <h1 style="margin-top: 25px;">
-                    Event List
+                    Upcoming Event
                   </h1>
-                  <br />
+                          <div class="row" style="margin-bottom: 20px; margin-top: 20px">
+                            <div class="col-6">
+                              <div class="input-group">
+                                <input class="form-control border-secondary py-2" style="height:30px; font-size:14px;" placeholder="search for items" type="text"
+                                  #data />
+                                  <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary" style="width: 100px; padding: 5px; background-color:white;" type="button" (click)="devicesearch(data.value)">
+                                   search
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                  <div class="row" style="margin-top: 25px;">
+
+                    <div *ngFor="let item of upcomingEvents">
+                      <div *ngIf="OrganizerId == item.hostId">
+                        
+                      <div class="col-md-3 col-sm-6">
+                        <div class="card card-block" style="width: 18rem;" class="card" [ngClass]="{highlight: item.highlight}">
+                          <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+                            <img src={{item.image}} alt="Photo of sunset">
+                            <h5 class="card-title mt-3 mb-3">{{item.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Participants: {{item.numMember}} Peoples</h6>
+                            <p class="card-text">Address: {{item.location}}</p>
+                            <a href="javascript:void(0);" class="card-link" (click)="EditRecord(item)">Edit</a>
+                            <a href="javascript:void(0);" class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+                          </div>
+                          <ng-template #elseBlock>
+                            <div class="card-body">
+                              <h5 class="card-title">Edit</h5>
+                              <div class="form-group">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    Event Name:
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditName"
+                                      placeholder="Edit Name">
+                                  </div>
+                                  <div class="col-md-12">
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditNumMember"
+                                      placeholder="Edit Age">
+                                  </div>
+                                  <div class="col-md-12">
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditLocation"
+                                      placeholder="Edit Address">
+                                  </div>
+                                </div>
+                              </div>
+                              <a href="javascript:void(0);" class="card-link" (click)="item.isEdit = false">Cancel</a>
+                              <a href="javascript:void(0);" class="card-link" (click)="UpdateRecord(item)">Update</a>
+                            </div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Show events -->
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width: 100%;">
+                  <h1 style="margin-top: 25px;">
+                    Ongoing Event
+                  </h1>
                   <!-- <div class="row" style="margin-top: 25px;">
                             <div class="col-md-3">
                               <input type="text" class="form-control" [(ngModel)]="eventName" placeholder="Name">
@@ -243,22 +314,74 @@
                                 Create Student</button>
                             </div>
                           </div> -->
-                          <div class="row" style="margin-bottom: 20px; margin-top: 20px">
-                            <div class="col-6">
-                              <div class="input-group">
-                                <input class="form-control border-secondary py-2" style="height:30px; font-size:14px;" placeholder="search for items" type="text"
-                                  #data />
-                                  <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary" style="width: 100px; padding: 5px; background-color:white; font-color: red;" type="button" (click)="devicesearch(data.value)">
-                                   search
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
                   <div class="row" style="margin-top: 25px;">
 
-                    <div *ngFor="let item of events">
+                    <div *ngFor="let item of ongoingEvents">
+                      <div *ngIf="OrganizerId == item.hostId">
+                        
+                      <div class="col-md-3 col-sm-6">
+                        <div class="card card-block" style="width: 18rem;" class="card" [ngClass]="{highlight: item.highlight}">
+                          <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+                            <img src={{item.image}} alt="Photo of sunset">
+                            <h5 class="card-title mt-3 mb-3">{{item.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Participants: {{item.numMember}} Peoples</h6>
+                            <p class="card-text">Address: {{item.location}}</p>
+                            <a href="javascript:void(0);" class="card-link" (click)="EditRecord(item)">Edit</a>
+                            <a href="javascript:void(0);" class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+                          </div>
+                          <ng-template #elseBlock>
+                            <div class="card-body">
+                              <h5 class="card-title">Edit</h5>
+                              <div class="form-group">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    Event Name:
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditName"
+                                      placeholder="Edit Name">
+                                  </div>
+                                  <div class="col-md-12">
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditNumMember"
+                                      placeholder="Edit Age">
+                                  </div>
+                                  <div class="col-md-12">
+                                    <input type="text" class="form-control" [(ngModel)]="item.EditLocation"
+                                      placeholder="Edit Address">
+                                  </div>
+                                </div>
+                              </div>
+                              <a href="javascript:void(0);" class="card-link" (click)="item.isEdit = false">Cancel</a>
+                              <a href="javascript:void(0);" class="card-link" (click)="UpdateRecord(item)">Update</a>
+                            </div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Show events -->
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50" style="width: 100%;">
+                  <h1 style="margin-top: 25px;">
+                    Ended Event
+                  </h1>
+                  <!-- <div class="row" style="margin-top: 25px;">
+                            <div class="col-md-3">
+                              <input type="text" class="form-control" [(ngModel)]="eventName" placeholder="Name">
+                            </div>
+                            <div class="col-md-3">
+                              <input type="text" class="form-control" [(ngModel)]="eventNumMember" placeholder="Age">
+                            </div>
+                            <div class="col-md-3">
+                              <input type="text" class="form-control" [(ngModel)]="eventLocation" placeholder="Address">
+                            </div>
+                            <div class="col-md-3">
+                              <button type="button" (click)="CreateRecord()" [disabled]="!eventName || !eventNumMember || !eventLocation" class="btn btn-primary">+
+                                Create Student</button>
+                            </div>
+                          </div> -->
+                          
+                  <div class="row" style="margin-top: 25px;">
+
+                    <div *ngFor="let item of endedEvents">
                       <div *ngIf="OrganizerId == item.hostId">
                         
                       <div class="col-md-3 col-sm-6">
@@ -301,7 +424,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
